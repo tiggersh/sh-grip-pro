@@ -9,20 +9,20 @@
 /* ── 토큰 ─────────────────────────────────── */
 :root {
   /* 배경 레이어 */
-  --bg-base:       #080810;
-  --bg-elevated:   #141420;
-  --bg-card:       #1e1e2e;
-  --bg-card-2:     #26263a;
-  --bg-input:      #1a1a28;
+  --bg-base:       #0c0c14;
+  --bg-elevated:   #161624;
+  --bg-card:       #22223a;
+  --bg-card-2:     #2c2c44;
+  --bg-input:      #1e1e30;
 
   /* 테두리 */
-  --border:        rgba(255,255,255,0.14);
-  --border-subtle: rgba(255,255,255,0.08);
+  --border:        rgba(255,255,255,0.20);
+  --border-subtle: rgba(255,255,255,0.10);
 
   /* 텍스트 */
-  --text-primary:  #f5f5fd;
-  --text-secondary:#a8a8c8;
-  --text-tertiary: #707090;
+  --text-primary:  #ffffff;
+  --text-secondary:#c0c0e0;
+  --text-tertiary: #9090b0;
 
   /* 액센트 — 악력의 힘을 상징하는 전기청색 */
   --accent:        #4f8fff;
@@ -38,8 +38,8 @@
   --warning-dim:   rgba(251,191,36,0.12);
 
   /* 손 구분 */
-  --left-color:    #a78bfa;   /* 보라 — 왼손 */
-  --right-color:   #4f8fff;   /* 파랑 — 오른손 */
+  --left-color:    #b89dff;   /* 보라 — 왼손 */
+  --right-color:   #6aa3ff;   /* 파랑 — 오른손 */
 
   /* 레이아웃 */
   --radius-sm:     10px;
@@ -318,11 +318,11 @@ body {
 
 /* ── 페이지 헤더 ──────────────────────────── */
 .page-header {
-  padding: 48px 20px 8px;
+  padding: 36px 20px 4px;
 }
 
 .page-title {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
@@ -336,7 +336,7 @@ body {
 
 /* ── 섹션 ─────────────────────────────────── */
 .section {
-  padding: 16px 20px 0;
+  padding: 10px 20px 0;
 }
 
 .section-label {
@@ -375,15 +375,15 @@ body {
 }
 
 .hand-badge.left {
-  background: rgba(167,139,250,0.12);
+  background: rgba(167,139,250,0.20);
   color: var(--left-color);
-  border: 1px solid rgba(167,139,250,0.2);
+  border: 1px solid rgba(167,139,250,0.40);
 }
 
 .hand-badge.right {
-  background: rgba(79,143,255,0.12);
+  background: rgba(79,143,255,0.20);
   color: var(--right-color);
-  border: 1px solid rgba(79,143,255,0.2);
+  border: 1px solid rgba(79,143,255,0.40);
 }
 
 /* ── 무게 표시 (모노) ─────────────────────── */
@@ -409,13 +409,13 @@ body {
 
 .today-status {
   background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.22);
   border-radius: var(--radius-xl);
-  padding: 20px;
-  margin-top: 16px;
+  padding: 16px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
 .status-row {
@@ -426,8 +426,9 @@ body {
 
 .status-item {
   background: var(--bg-card-2);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-md);
-  padding: 14px;
+  padding: 11px 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -443,7 +444,7 @@ body {
 
 .status-item-value {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -620,6 +621,45 @@ body {
 }
 
 .rep-btn:active { transform: scale(0.9); opacity: 0.7; }
+/* 횟수 선택 그리드 */
+.rep-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.rep-grid-btn {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card-2);
+  color: var(--text-secondary);
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.12s var(--ease-spring);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rep-grid-btn:active {
+  transform: scale(0.88);
+  opacity: 0.8;
+}
+
+.rep-grid-btn.selected {
+  font-size: 20px;
+  transform: scale(1.06);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.rep-grid-btn.target {
+  font-weight: 700;
+}
 
 /* 타이머 링 */
 .timer-ring-wrap {
