@@ -15,11 +15,11 @@ import {
 
 // 블록 타입별 테마
 const BLOCK_THEME = {
-  warmup_a: { color: '#7fb3ff', label: '워밍업',   accent: 'rgba(127,179,255,0.15)' },
-  warmup_b: { color: '#7fb3ff', label: '워밍업',   accent: 'rgba(127,179,255,0.15)' },
-  main:     { color: '#6aa3ff', label: '메인 세트', accent: 'rgba(79,143,255,0.20)' },
+  warmup_a: { color: '#7fb3ff', label: '워밍업',    accent: 'rgba(127,179,255,0.15)' },
+  warmup_b: { color: '#7fb3ff', label: '워밍업',    accent: 'rgba(127,179,255,0.15)' },
+  main:     { color: '#6aa3ff', label: '메인 세트', accent: 'rgba(79,143,255,0.20)'  },
   negative: { color: '#f472b6', label: '네거티브',  accent: 'rgba(244,114,182,0.15)' },
-  holding:  { color: '#34d399', label: '홀딩',      accent: 'rgba(52,211,153,0.15)' },
+  holding:  { color: '#34d399', label: '홀딩',      accent: 'rgba(52,211,153,0.15)'  },
 };
 
 // ══════════════════════════════════════════
