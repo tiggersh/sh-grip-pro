@@ -127,23 +127,18 @@ export async function renderSettingsTab(container) {
   document.getElementById('importFile').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-
       if (!data.profile || !data.sessions) {
         alert('올바른 SH Grip Pro 백업 파일이 아닙니다.');
         return;
       }
-
       if (!confirm(`백업 데이터를 가져오면 현재 데이터가 덮어씌워집니다.\n계속할까요?`)) return;
-
       await saveProfile(data.profile);
       for (const s of data.sessions) {
         await saveSession(s);
       }
-
       state.profile = data.profile;
       alert('데이터 가져오기 완료!');
       renderSettingsTab(container);
@@ -151,9 +146,8 @@ export async function renderSettingsTab(container) {
       alert('파일을 읽는 중 오류가 발생했습니다.');
     }
   });
-}
 
-// ── 마지막 기록 삭제 ──
+  // ── 마지막 기록 삭제 ──
   const allSessions = await getAllSessions();
   const sorted = allSessions.sort((a, b) => b.date.localeCompare(a.date));
   const lastSession = sorted[0];
@@ -174,7 +168,6 @@ export async function renderSettingsTab(container) {
 
     await deleteSession(lastSession.id);
 
-    // 연속 기록 -1 되돌리기
     for (const hand of ['left', 'right']) {
       const s = profile[hand].streak;
       if (s > 0) profile[hand].streak = Math.max(0, s - 1);
@@ -192,16 +185,13 @@ export async function renderSettingsTab(container) {
     if (!confirm('모든 훈련 기록과 프로필이 삭제됩니다.\n정말 초기화할까요?')) return;
     if (!confirm('⚠️ 되돌릴 수 없습니다. 계속할까요?')) return;
 
-    // sessions 전체 삭제
     for (const s of allSessions) {
       await deleteSession(s.id);
     }
 
-    // profile 삭제 → 온보딩으로
     const { initDB } = await import('./db.js');
     const db = await initDB();
 
-    // profile store 직접 clear
     await new Promise((res, rej) => {
       const tx  = db.transaction('profile', 'readwrite');
       const req = tx.objectStore('profile').clear();
@@ -213,7 +203,9 @@ export async function renderSettingsTab(container) {
     alert('초기화 완료. 앱을 다시 시작합니다.');
     window.location.reload();
   });
-}
+
+}  // ← renderSettingsTab 닫힘 (여기로 이동)
+
 // ── 무게 선택 시트 ────────────────────────
 function showWeightPicker(hand, profile, container) {
   const current = profile[hand].stage;
