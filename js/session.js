@@ -230,12 +230,21 @@ function renderBlock(container, session) {
   const pct   = Math.round((idx / total) * 100);
   const theme = BLOCK_THEME[block.type] || BLOCK_THEME.main;
 
+  const handColor = block.hand === 'left' ? 'var(--left-color)' : 'var(--right-color)';
+  const handLabel = block.hand === 'left' ? '✋ 왼손' : '🤚 오른손';
+  const handSide  = block.hand === 'left' ? 'left' : 'right';
+
   const headerHTML = `
     <div class="session-header" style="border-bottom:2px solid ${theme.color}22">
       <div class="session-progress-bar">
         <div class="session-progress-fill" style="width:${pct}%;background:${theme.color}"></div>
       </div>
       <span class="session-step-label" style="color:${theme.color}">${idx + 1} / ${total}</span>
+    </div>
+    <div class="hand-indicator hand-indicator-${handSide}">
+      <div class="hand-indicator-bar" style="background:${handColor}"></div>
+      <span class="hand-indicator-label" style="color:${handColor}">${handLabel}</span>
+      <div class="hand-indicator-bar" style="background:${handColor}"></div>
     </div>
   `;
 
