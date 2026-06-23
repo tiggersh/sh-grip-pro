@@ -90,7 +90,7 @@ export function judgeStreak(mainSuccess, currentStreak, currentStage) {
   let streak = currentStreak;
 
   if (mainSuccess) {
-    streak = streak > 0 ? streak + 1 : 1; // 실패 스트릭이면 리셋 후 1
+    streak = streak > 0 ? streak + 1 : 1;
   } else {
     streak = streak < 0 ? streak - 1 : -1;
   }
@@ -99,21 +99,19 @@ export function judgeStreak(mainSuccess, currentStreak, currentStage) {
   let event = null;
 
   if (streak >= SUCCESS_THRESHOLD) {
-  if (stage < MAX_STAGE) {
-    stage += 1;
-    event = 'promoted';
-  } else {
-    event = 'max_stage';
-  }
-  streak = 0;
-  }
-    streak = 0; // 진급 후 리셋
+    if (stage < MAX_STAGE) {
+      stage += 1;
+      event = 'promoted';
+    } else {
+      event = 'max_stage';
+    }
+    streak = 0;
   } else if (streak <= FAIL_THRESHOLD) {
     if (stage > MIN_STAGE) {
       stage -= 1;
-      event  = 'demoted';
+      event = 'demoted';
     }
-    streak = 0; // 감급 후 리셋
+    streak = 0;
   }
 
   return { newStreak: streak, newStage: stage, event };
