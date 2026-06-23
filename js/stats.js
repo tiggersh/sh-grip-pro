@@ -110,21 +110,21 @@ export async function renderStatsTab(container) {
 
   renderStats('left');
 
-  document.getElementById('tabLeft').addEventListener('click', () => {
-    if (activeHand === 'left') return;
-    activeHand = 'left';
-    document.getElementById('tabLeft').classList.add('active', 'left');
-    document.getElementById('tabRight').classList.remove('active', 'right');
-    renderStats('left');
-  });
+document.getElementById('tabLeft').addEventListener('click', () => {
+  if (activeHand === 'left') return;
+  activeHand = 'left';
+  document.getElementById('tabLeft').classList.add('active');
+  document.getElementById('tabRight').classList.remove('active');
+  renderStats('left');
+});
 
-  document.getElementById('tabRight').addEventListener('click', () => {
-    if (activeHand === 'right') return;
-    activeHand = 'right';
-    document.getElementById('tabRight').classList.add('active', 'right');
-    document.getElementById('tabLeft').classList.remove('active', 'left');
-    renderStats('right');
-  });
+document.getElementById('tabRight').addEventListener('click', () => {
+  if (activeHand === 'right') return;
+  activeHand = 'right';
+  document.getElementById('tabRight').classList.add('active');
+  document.getElementById('tabLeft').classList.remove('active');
+  renderStats('right');
+});
 }
 
 // ── 무게 단계 차트 (계단형) ───────────────
